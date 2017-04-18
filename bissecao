@@ -1,8 +1,7 @@
-% esse funcao tem como objetivo calcular a raiz de uma 
-% funcao f dentro de um intervale xmin e xmax com 
-% um determinado numero de iteraçoes
-% para ultilizar essa função basta escrever o nome bissecao i precionar
-% Enter..
+% esse funcao tem como objetivo calcular a raiz pelo metodo da bissecao
+% funcao f dentro de um intervale xmin e xmax  
+% ela para de acordo com o criterio de parada pre estabelecido no descritivo do trabalho
+%
 
 function  bissecao()
 
