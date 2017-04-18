@@ -1,7 +1,8 @@
-% esse funcao tem como objetivo calcular a raiz pelo metodo da bissecao
-% funcao f dentro de um intervale xmin e xmax  
-% ela para de acordo com o criterio de parada pre estabelecido no descritivo do trabalho
-%
+% esse funcao tem como objetivo calcular a raiz de uma 
+% funcao f dentro de um intervale xmin e xmax com 
+% com o metodo da bissecao
+% para ultilizar essa função basta escrever o nome bissecao e precionar
+% enter
 
 function  bissecao()
 
@@ -9,15 +10,13 @@ function  bissecao()
 xmin = input('Insira o valor de xmin:');
 xmax = input('Insira o valor de xmax:');
 
-numMaxIteracao = input('Insira o valor do Numero Maximo de iteraçoes:');
-
 
 if f( xmin ) * f ( xmax ) > 0 % verifica se ha mudanca de sinais no intervalo
 error ( ' Nao ha mudanca de sinal no intervalo indicado ' );
 end
 
 raizVerdadeira = fzero(@(x)x^3-9*x+3,[xmin xmax]);
-fprintf('Solucao verdadeira fzero(): %8.4f \n',raizVerdadeira);
+fprintf('Solucao verdadeira fzero(): %.5f \n',raizVerdadeira);
 
 disp('********************BISSECAO********************');
 numIteracao = 0;
@@ -30,12 +29,12 @@ hold on;
 
  % enquanto não passar do numero maximo de iteracoes... 
  fprintf ('Iteraçao    Raiz aproximada    Amplitude   \n'  );
- %fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
+ 
       
 while ( amplitude > 0.02)
     
     
-    fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
+    fprintf (' %2d            %.5f          %.5f            \n'  , numIteracao, xr,amplitude);
    
      numIteracao = numIteracao +1;      
     
@@ -68,3 +67,4 @@ function resultado = f(x)
  resultado = x^3-9*x+3;
 
 end
+
