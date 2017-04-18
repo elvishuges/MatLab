@@ -1,4 +1,3 @@
-
 % esse funcao tem como objetivo calcular a raiz de uma 
 % funcao f dentro de um intervale xmin e xmax com 
 % um determinado numero de iteraçoes
@@ -21,30 +20,26 @@ end
 raizVerdadeira = fzero(@(x)x^3-9*x+3,[xmin xmax]);
 fprintf('Solucao verdadeira fzero(): %8.4f \n',raizVerdadeira);
 
-disp('****************************************************');
+disp('********************BISSECAO********************');
 numIteracao = 0;
 
-xr =0;
+xr = (xmin + xmax) /2;
 amplitude  = xmax - xmin;
      
 hold on;
 
 
-% enquanto não passar do numero maximo de iteracoes... 
-  fprintf ('Iteraçao    Raiz aproximada    Amplitude   \n'  , numIteracao );
- fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
+ % enquanto não passar do numero maximo de iteracoes... 
+ fprintf ('Iteraçao    Raiz aproximada    Amplitude   \n'  );
+ %fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
       
 while ( amplitude > 0.02)
     
+    
+    fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
    
-     numIteracao = numIteracao +1;
-         
-          
-     xr = (xmin + xmax) /2;
-         
-     %fprintf (' %2d            %8.4f            %8.4f               %8.4f \n'  , numIteracao, xr, ea ,es);
-     
-     
+     numIteracao = numIteracao +1;      
+    
      if( f(xmin) * f(xr)  < 0)
         xmax = xr;
         
@@ -52,7 +47,7 @@ while ( amplitude > 0.02)
         xmin = xr;
      end
      amplitude = xmax -xmin;
-     fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
+     xr = (xmin + xmax) /2;
       
      plot (xr,f(xr),'bo');
      hold on;
@@ -74,10 +69,3 @@ function resultado = f(x)
  resultado = x^3-9*x+3;
 
 end
-
-
-
-
-
-
-
