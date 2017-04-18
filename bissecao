@@ -1,0 +1,83 @@
+
+% esse funcao tem como objetivo calcular a raiz de uma 
+% funcao f dentro de um intervale xmin e xmax com 
+% um determinado numero de iteraçoes
+% para ultilizar essa função basta escrever o nome bissecao i precionar
+% Enter..
+
+function  bissecao()
+
+
+xmin = input('Insira o valor de xmin:');
+xmax = input('Insira o valor de xmax:');
+
+numMaxIteracao = input('Insira o valor do Numero Maximo de iteraçoes:');
+
+
+if f( xmin ) * f ( xmax ) > 0 % verifica se ha mudanca de sinais no intervalo
+error ( ' Nao ha mudanca de sinal no intervalo indicado ' );
+end
+
+raizVerdadeira = fzero(@(x)x^3-9*x+3,[xmin xmax]);
+fprintf('Solucao verdadeira fzero(): %8.4f \n',raizVerdadeira);
+
+disp('****************************************************');
+numIteracao = 0;
+
+xr =0;
+amplitude  = xmax - xmin;
+     
+hold on;
+
+
+% enquanto não passar do numero maximo de iteracoes... 
+  fprintf ('Iteraçao    Raiz aproximada    Amplitude   \n'  , numIteracao );
+ fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
+      
+while ( amplitude > 0.02)
+    
+   
+     numIteracao = numIteracao +1;
+         
+          
+     xr = (xmin + xmax) /2;
+         
+     %fprintf (' %2d            %8.4f            %8.4f               %8.4f \n'  , numIteracao, xr, ea ,es);
+     
+     
+     if( f(xmin) * f(xr)  < 0)
+        xmax = xr;
+        
+        elseif (f(xmax) * f(xr)  < 0 )
+        xmin = xr;
+     end
+     amplitude = xmax -xmin;
+     fprintf (' %2d            %8.4f          %8.4f           \n'  , numIteracao, xr,amplitude);
+      
+     plot (xr,f(xr),'bo');
+     hold on;
+     
+     
+     fplot(@(x) x.^3-9*x+3,[0 3]);
+hold on
+plot(xr,xr^3-9*xr+3, '*','markersize', 20)
+pause(0.3);
+grid on
+     
+end 
+      
+end
+
+% Funcao local que retorna cada imagem de um valor do dominio..
+function resultado = f(x)
+
+ resultado = x^3-9*x+3;
+
+end
+
+
+
+
+
+
+
