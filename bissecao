@@ -1,21 +1,22 @@
+
 % esse funcao tem como objetivo calcular a raiz de uma 
 % funcao f dentro de um intervale xmin e xmax com 
-% com o metodo da bissecao
-% para ultilizar essa função basta escrever o nome bissecao e precionar
-% enter
+% um determinado numero de iteraçoes
+% para ultilizar essa função basta escrever o nome bissecao i precionar
+% Enter..
 
 function  bissecao()
 
 
 xmin = input('Insira o valor de xmin:');
 xmax = input('Insira o valor de xmax:');
-
+numMaxIteracao = input('Insira o valor do Numero Maximo de iteraçoes:');
 
 if f( xmin ) * f ( xmax ) > 0 % verifica se ha mudanca de sinais no intervalo
 error ( ' Nao ha mudanca de sinal no intervalo indicado ' );
 end
 
-raizVerdadeira = fzero(@(x)x^3-9*x+3,[xmin xmax]);
+raizVerdadeira = fzero(@(x)(x^2) *sin(x)+cos(x),[xmin xmax]);
 fprintf('Solucao verdadeira fzero(): %.5f \n',raizVerdadeira);
 
 disp('********************BISSECAO********************');
@@ -28,10 +29,10 @@ hold on;
 
 
  % enquanto não passar do numero maximo de iteracoes... 
- fprintf ('Iteraçao    Raiz aproximada    Amplitude   \n'  );
+ fprintf ('i                 Xr          Amplitude   \n'  );
  
       
-while ( amplitude > 0.02)
+while ( amplitude > 0.02 &&  numIteracao < numMaxIteracao)
     
     
     fprintf (' %2d            %.5f          %.5f            \n'  , numIteracao, xr,amplitude);
@@ -50,10 +51,10 @@ while ( amplitude > 0.02)
      plot (xr,f(xr),'bo');
      hold on;
      
-     
-     fplot(@(x) x.^3-9*x+3,[0 3]);
+     % funcao :x*x*sin(x)-cos(x)
+     fplot(@(x) x.^2*sin(x)+cos(x),[-1 3]);
 hold on
-plot(xr,xr^3-9*xr+3, '*','markersize', 20)
+plot(xr,xr^2*sin(xr)+cos(xr), '*','markersize', 20)
 pause(0.3);
 grid on
      
@@ -64,7 +65,7 @@ end
 % Funcao local que retorna cada imagem de um valor do dominio..
 function resultado = f(x)
 
- resultado = x^3-9*x+3;
+ resultado = x^2*sin(x)+cos(x);
 
 end
 
