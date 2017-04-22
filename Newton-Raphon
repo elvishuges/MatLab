@@ -10,33 +10,33 @@ xr = input('Insira o valor do chute para a raiz:');
 
 maxit = input('Insira o valor do numero maximo de iteraçoes:');
 
-raizVerdadeira = fzero(@(x) x^2-3,[-3 -1]);
-fprintf('Solucao verdadeira fzero(): %8.4f \n',raizVerdadeira);
+raizVerdadeira = fzero(@(x) x^2*sin(x)+cos(x),[0 4]);
+fprintf('Solucao verdadeira fzero():  %.5f \n',raizVerdadeira);
 anterior =0;
 
-es = abs( ( xr - anterior ) );
+erroAbsoluto = abs( ( xr - anterior ) );
 it = 0; ea = 100;
 disp('****************************************************');
-fprintf('Iteracao       Raiz aproximada         Erro de estimação         Erro verdadeiro\n');
-fprintf('%2d                 %8.4f             %8.4f                     %8.4f \n',it,xr,ea,es);
+fprintf('Iteracao       Raiz aproximada         Erro de estimação         erroAbsoluto\n');
+fprintf('%2d                  %.5f              %.5f                     %.5f \n',it,xr,ea,erroAbsoluto);
 
 while (it<maxit)
     
     it = it+1;
     anterior = xr;
     xr = xr - f(xr)/df(xr);
-    if xr ~= 0;
-        ea = abs((xr-anterior)/xr)*100;
-        es = abs( ( raizVerdadeira - anterior ) / xr * 100) ;% calcula valor absoluto do erro verdadeiro..
-    end
+   
+        
+        erroAbsoluto = abs( ( xr - anterior ) ) ;% calcula valor absoluto do erro verdadeiro..
     
-     fprintf('%2d                 %8.4f             %8.4f                     %8.4f \n',it,xr,ea,es);
+    
+     fprintf('%2d                  %.5f              %.5f                     %.5f \n',it,xr,ea,erroAbsoluto);
      plot (xr,f(xr),'bo');
      hold on;
      
      % x^2*sin(x)+cos(x)
      fplot(@(x) x.^2*sin(x)+cos(x),[-10 20]);
-      hold on
+     hold on
      plot(xr,xr^2*sin(xr)+cos(xr), '*','markersize', 20)
      pause(0.3);
      grid on
@@ -55,4 +55,5 @@ function resultado= df(x)
  resultado = 2*x*sin(x)+cos(x)*x^2+cos(x);
 
 end
+    
     
