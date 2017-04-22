@@ -16,6 +16,7 @@
 %% and
 %% http://www.ieee.org/
 
+
 %%*************************************************************************
 %% Legal Notice:
 %% This code is offered as-is without any warranty either expressed or
@@ -65,7 +66,7 @@
 %
 \documentclass[conference]{IEEEtran}
 \usepackage{blindtext, graphicx}
-
+\usepackage{amsmath}
 
 % Add the compsoc option for Computer Society conferences.
 % \textgreater
@@ -524,7 +525,7 @@ Para os testes realizados nos algoritmos desenvolvidos dos na ferramenta MATLAB,
 1 Insira o valor de xmin:2 \\
 2 Insira o valor de xmax:5 \\
 3 Insira o valor do Numero Maximo de iteraçoes:5\\\\
- Como \'e observado na simula\c{c}\^ao acim, as exigencias do algoritmo s\^ao o intervalo I = [a;b] e o numero de iterações, que tamb\'em ser\'a um outro crit\'erio de parada, al\'em da amplitude do intervalo que é um requisito de projeto. Nesta simula\c{c}\^ao foi inserido o intervalor I = [2;5] e um numero de iterações igual a 5. A seguir é exibido o algoritimo em execução:\\ \\
+ Como \'e observado na simula\c{c}\^ao acima, as exigencias do algoritmo s\^ao o intervalo I = [a;b] e o numero de iterações, que tamb\'em ser\'a um outro crit\'erio de parada, al\'em da amplitude do intervalo que é um requisito de projeto. Nesta simula\c{c}\^ao foi inserido o intervalor I = [2;5] e um numero de iterações igual a 5. A seguir é exibido o algoritimo em execução:\\ \\
  Solucao verdadeira fzero(): 3.03334 \\
 ********************BISSECAO********************\\
 i    ~~~~~~~~~~    Xr ~~~~~~   Amplitude   \\
@@ -533,7 +534,7 @@ i    ~~~~~~~~~~    Xr ~~~~~~   Amplitude   \\
   2  ~~~~~~   3.12500  ~~~~~~  0.75000 \\           
   3  ~~~~~~   2.93750 ~~~~~~  0.37500   \\         
   4  ~~~~~~ 3.03125   ~~~~~~ 0.18750  \\  \\
-  Observando a execução do c\'odigo acima, verifica-se que, com um numero relativamente pequeno de iterações, o algoritmo correspondente ao metodo da Bisseção se aproximou do valor calculador por "fzero()" (função implementada pelo MATLAB para c\'alculo de raiz de função), parando em  Xr = 3.03125, e com a aplitude inicial igual a 3 (\textbar a-b \textbar = \textbar5-2\textbar), a cada passo esse valor foi decaindo. A seguir foi usado um numero de iterações elevado, para forçar o algoritmo parar quando a aplitude dor menor que a desejada na implementação 0.01. \\   \\   
+  Observando a execução do c\'odigo acima, verifica-se que, com um numero relativamente pequeno de iterações, o algoritmo correspondente ao metodo da Bisseção se aproximou do valor calculador por "fzero()" (função implementada pelo MATLAB para c\'alculo de raiz de função), parando em  Xr = 3.03125, e com a aplitude inicial igual a 3 (\textbar a-b \textbar = \textbar5-2\textbar), a cada passo esse valor foi decaindo. A seguir foi usado um numero de iterações elevado, para forçar o algoritmo parar quando a aplitude der menor que a desejada na implementação (0.01). \\   \\   
   1 Insira o valor de xmin:2 \\
 2 Insira o valor de xmax:5 \\
 3 Insira o valor do Numero Maximo de iteraçoes:20 \\
@@ -568,8 +569,33 @@ i  ~~~~~~~~~~    Xr ~~~~~~   Amplitude \\
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
- Para a analise 
+ Para a analisar o algoritmo de implementação do metodo Newton-Raphson foi ultilizada a mesma função porem com diferente crit\'erio de parada.Para essa execeção o algoritmo deve para quando o erro absoluto ser menor ou igual a 0.001, o seja, $ \lvert x_{i+1} - x_{i} \leq 0.001 \rvert\ $. A seguir é mostrado a simulação no MATLAB do algoritmo que representa o n\'etodo de  Newton-Raphson:\\ 
+ 1 Insira o valor do chute para a raiz:3\\
+ 2 Insira o valor do numero maximo de iteraçoes:3\\
+ 
+ Observa-se a entradas para o algoritmo execultar eficientemente.Logo, deve-se saber um valor proximo da raiz da função para o algoritm não comenter nenhuma extrapolaçao.A seguir é mostrado a execução proprimamente dita:\\ 
+Solucao verdadeira fzero():  3.03334 \\
+****************NewtonRaphson********************\\
+Iteracao ~~~~~ Raiz aproximada  ~~~~~~ erroAbsoluto \\
+ 0   ~~~~~~~~~~~~~~~~~~~~    3.00000  ~~~~~~~~~~~~~~~~      3.00000 \\
+ 1   ~~~~~~~~~~~~~~~~~~~~  3.03094   ~~~~~~~~~~~~~~~~       0.03094 \\
+ 2   ~~~~~~~~~~~~~~~~~~~~ 3.03311    ~~~~~~~~~~~~~~~~       0.00218 \\ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+ 
+ Nota-se que o algoritmo para na terceira iteração mostrando que a raiz naquele momento foi calculada como 3.03311.Agora para forçar o algoritmo para com o erro menor que 0.001:\\ \\
+ 1 Insira o valor do chute para a raiz:3 \\
+ 2 Insira o valor do numero maximo de iteraçoes:10 \\
+Solucao verdadeira fzero():  3.03334 \\
+****************NewtonRaphson********************\\
+Iteracao ~~~~~ Raiz aproximada  ~~~~~~ erroAbsoluto\\
+ 0   ~~~~~~~~~~~~~~~~~~~~    3.00000   ~~~~~~~~~~~~~~   3.00000\\ 
+ 1 ~~~~~~~~~~~~~~~~~~~~ 3.03094~~~~~~~~~~~~~~~~  0.03094 \\
+ 2 ~~~~~~~~~~~~~~~~~~~~ 3.03311 ~~~~~~~~~~~~~~~   0.00218 \\
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+ Apesar de um numero elevado de iterações entradas pelo usuario, o metodo para na terceira, pos alcança rapidamente o criterio de parada, pedido no problema.
+ 
 
+ 
 
 
 %section{Resultados}
