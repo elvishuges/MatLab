@@ -1,11 +1,12 @@
 
+
 % esse funcao tem como objetivo calcular a raiz de uma 
 % funcao f dentro de um intervale xmin e xmax com 
 % um determinado numero de iteraçoes
 % para ultilizar essa função basta escrever o nome bissecao i precionar
 % Enter..
 
-function  bissecao()
+function  trabalho1()
 
 
 
@@ -17,7 +18,7 @@ if f( xmin ) * f ( xmax ) > 0 % verifica se ha mudanca de sinais no intervalo
 error ( ' Nao ha mudanca de sinal no intervalo indicado ' );
 end
 
-raizVerdadeira = fzero(@(x)(x^2) *sin(x)+cos(x),[0 4]);
+raizVerdadeira = fzero(@(x)(x^2) *sin(x)+cos(x),[xmin xmax]);
 fprintf('Solucao verdadeira fzero(): %.5f \n',raizVerdadeira);
 
 disp('********************BISSECAO********************');
@@ -32,7 +33,7 @@ amplitude  = xmax - xmin;
  % enquanto não passar do numero maximo de iteracoes... 
  fprintf ('i                 Xr          Amplitude   \n'  );
  
-f1 = figure;      
+f1 = figure('Name','Bissecao');   
 while ( amplitude > 0.01 &&  numIteracao < numMaxIteracao)
     
     
@@ -101,7 +102,7 @@ it = 0; ea = 100;
 disp('****************NewtonRaphson********************');
 fprintf('Iteracao       Raiz aproximada           erroAbsoluto\n');
 fprintf('%2d                %.5f                     %.5f \n',it,xr,erroAbsoluto);
-f2 = figure;
+f2 = figure('Name','NewtonRaphson');
 while (it<maxit-1 && erroAbsoluto >0.001 )
     
     it = it+1;
@@ -127,6 +128,13 @@ while (it<maxit-1 && erroAbsoluto >0.001 )
     
 end
 end
+
+
+
+
+
+
+
 
 
 
