@@ -1,0 +1,136 @@
+
+% esse funcao tem como objetivo calcular a raiz de uma 
+% funcao f dentro de um intervale xmin e xmax com 
+% um determinado numero de iteraçoes
+% para ultilizar essa função basta escrever o nome bissecao i precionar
+% Enter..
+
+function  bissecao()
+
+
+
+xmin = input('Insira o valor de xmin para Bissecao:');
+xmax = input('Insira o valor de xmax para Bissecao:');
+numMaxIteracao = input('Insira o valor do Numero Maximo de iteraçoes para Bissecao:');
+
+if f( xmin ) * f ( xmax ) > 0 % verifica se ha mudanca de sinais no intervalo
+error ( ' Nao ha mudanca de sinal no intervalo indicado ' );
+end
+
+raizVerdadeira = fzero(@(x)(x^2) *sin(x)+cos(x),[0 4]);
+fprintf('Solucao verdadeira fzero(): %.5f \n',raizVerdadeira);
+
+disp('********************BISSECAO********************');
+numIteracao = 0;
+
+xr = (xmin + xmax) /2;
+amplitude  = xmax - xmin;
+     
+
+
+
+ % enquanto não passar do numero maximo de iteracoes... 
+ fprintf ('i                 Xr          Amplitude   \n'  );
+ 
+f1 = figure;      
+while ( amplitude > 0.01 &&  numIteracao < numMaxIteracao)
+    
+    
+    fprintf (' %2d            %.5f          %.5f            \n'  , numIteracao, xr,amplitude);
+   
+     numIteracao = numIteracao +1;      
+    
+     if( f(xmin) * f(xr)  < 0)
+        xmax = xr;
+        
+        elseif (f(xmax) * f(xr)  < 0 )
+        xmin = xr;
+     end
+     amplitude = xmax -xmin;
+     xr = (xmin + xmax) /2;
+     
+     plot (xr,f(xr),'bo');
+     hold on;
+     
+     % funcao :x*x*sin(x)-cos(x)
+     fplot(@(x) x.^2*sin(x)+cos(x),[-10 20]);
+hold on
+
+plot(xr,xr^2*sin(xr)+cos(xr), '*','markersize', 20)
+
+pause(0.3);
+grid on
+
+     
+end 
+     NewtonRaphson(); 
+end
+
+
+function resultado= df(x)
+
+ resultado = 2*x*sin(x)+cos(x)*x^2+cos(x);
+
+end
+
+
+
+
+% Funcao local que retorna cada imagem de um valor do dominio..
+function resultado = f(x)
+
+ resultado = x^2*sin(x)+cos(x);
+
+end
+
+
+
+
+function NewtonRaphson()
+
+xr = input('Insira o valor do chute para a raiz em Newton-Raphson:');
+
+maxit = input('Insira o valor do numero maximo de iteraçoes Para Newton-Raphson:');
+
+raizVerdadeira = fzero(@(x) x^2*sin(x)+cos(x),[0 4]);
+fprintf('Solucao verdadeira fzero():  %.5f \n',raizVerdadeira);
+anterior =0;
+
+erroAbsoluto = abs( ( xr - anterior ) );
+it = 0; ea = 100;
+disp('****************NewtonRaphson********************');
+fprintf('Iteracao       Raiz aproximada           erroAbsoluto\n');
+fprintf('%2d                %.5f                     %.5f \n',it,xr,erroAbsoluto);
+f2 = figure;
+while (it<maxit-1 && erroAbsoluto >0.001 )
+    
+    it = it+1;
+    anterior = xr;
+    xr = xr - f(xr)/df(xr);
+   
+        
+        erroAbsoluto = abs( ( xr - anterior ) ) ;% calcula valor absoluto do erro verdadeiro..
+    
+     fprintf('%2d                %.5f                     %.5f \n',it,xr,erroAbsoluto);
+     plot (xr,f(xr),'bo');
+     hold on;
+     
+     % x^2*sin(x)+cos(x)
+     
+     fplot(@(x) x.^2*sin(x)+cos(x),[-10 20]);
+     hold on
+     plot(xr,xr^2*sin(xr)+cos(xr), '*','markersize', 20)
+     
+     pause(0.3);
+     grid on
+     
+    
+end
+end
+
+
+
+
+
+
+
