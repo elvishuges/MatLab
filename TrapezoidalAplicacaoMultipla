@@ -1,0 +1,27 @@
+function TrapezoidalAplicacaoMultipla(limiteInferior,limiteSuperior,funcao)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+
+n = input('insira o valor o numero de pontos- deve ser maior que dois (5):');
+
+resultadoParcial = funcao(limiteInferior);
+h = (limiteSuperior - limiteInferior)/n;
+i = 1;
+while(i <= n)
+        %fprintf(' result:%8.4f \n',resultadoParcial);
+         if(i == n)
+           xi = limiteInferior + (i*h);
+           resultadoParcial = resultadoParcial + funcao(xi);
+         else
+           xi = limiteInferior + (i*h);
+           resultadoParcial = resultadoParcial + 2* funcao(xi);
+        end 
+        i = i+1;
+end
+
+resultadoFinal = resultadoParcial*h/2;
+fprintf(' o valor da integra pelo metodo do Trapezio com Aplicação Multipla é é:%8.16f \n',resultadoFinal);
+end
+
+  
