@@ -6,11 +6,14 @@ cd = input('insira o valor do coeficiente de arraste(0.25) :');
 
 limiteInferior = 0;
 limiteSuperior = 6;
+nTrapezioMultiplo = input('insira o valor o numero de pontos para Regra do Trapezio Multiplo (5):');
 % a seguir  temos a declaração da função principal
 funcao = @(x) sqrt((g*m)/cd)* tanh( sqrt((g*cd)/m)*x);
 %funcao = @(x) 1/x; Funcao Teste
+
+fprintf('Nome Da Regra   \n')
 regraTrapezoidal(limiteInferior,limiteSuperior,funcao);
-TrapezoidalAplicacaoMultipla(limiteInferior,limiteSuperior,funcao);
+TrapezoidalAplicacaoMultipla(limiteInferior,limiteSuperior,funcao,nTrapezioMultiplo);
 
 
 end
