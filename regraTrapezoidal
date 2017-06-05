@@ -1,0 +1,13 @@
+function regraTrapezoidal(limiteInferior,limiteSuperior,funcao)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+h = limiteSuperior-limiteInferior;
+
+resultadoRegraTrapeziodal = (funcao(limiteInferior) +  funcao(limiteSuperior))* h/2;
+fprintf(' o valor da integra pelo metodo do Trapezio Simples é:%8.16f \n',resultadoRegraTrapeziodal);
+
+
+
+end
+
