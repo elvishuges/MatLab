@@ -4,8 +4,8 @@ function regraTrapezoidal(limiteInferior,limiteSuperior,funcao)
 
 h = limiteSuperior-limiteInferior;
 
-resultadoRegraTrapeziodal = (funcao(limiteInferior) +  funcao(limiteSuperior))* h/2;
-fprintf(' o valor da integra pelo metodo do Trapezio Simples é:%8.16f \n',resultadoRegraTrapeziodal);
+resultadoRegraTrapezoidal = (funcao(limiteInferior) +  funcao(limiteSuperior))* h/2;
+fprintf('Trap:%8.16f \n',resultadoRegraTrapezoidal);
 
 
 
